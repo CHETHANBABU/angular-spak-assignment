@@ -1,1 +1,49 @@
-<p>login works!</p>
+<div class="container register">
+    <div class="row">
+        <div class="col-md-3 register-left">
+            <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
+            <h3>Welcome</h3>
+            <p>Are you a new Employee! Please register.</p>
+            <button class="w-50" style="border-radius: 50px;" (click)="selectNavigation('/auth/register')">Register</button>
+        </div>
+        <div class="col-md-9 register-right">
+            <form #loginForm="ngForm">
+
+                <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <h3 class="register-heading">Employee</h3>
+                    <div class="row register-form">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="form-label">Email address *</label>
+                                <input type="email" class="form-control" [(ngModel)]="model.email" #email="ngModel"
+                                    name="email" required preventWhiteSpace
+                                    pattern="^(?!.*\.{2})[a-zA-Z0-9._+-]{1,200}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" />
+                                <div class="text-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
+                                    <small class="inline" *ngIf="email.errors.required">Email address required.</small>
+                                    <small class="inline" *ngIf="email.errors.pattern">Invalid email address</small>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Password *</label>
+                                <input type="password" class="form-control"
+                                    pattern='^(?=(.*[a-z]))(?=(.*[A-Z]))(?=(.*[0-9]))(?=(.*[!@#$%^&*()\-_+.{}<>`~|]){1,}).{8,64}$'
+                                    minlength="8" maxlength="64" [(ngModel)]="model.password" #password="ngModel"
+                                    name="password" required autocomplete="off" />
+                                <div class="text-danger"
+                                    *ngIf="password.invalid && (password.dirty || password.touched)">
+                                    <small *ngIf="password.errors.required">Password required.</small>
+                                    <small *ngIf="password.errors.pattern">Password must be at
+                                        least 8 characters long, contain at least one number, one special character, and
+                                        have a mixture of uppercase and lowercase letters</small>
+                                </div>
+                            </div>
+                            <button class="btnRegister" (click)="loginHandler()"
+                                [disabled]="!loginForm.valid">Login</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

@@ -4,13 +4,15 @@ import { OnlynumberDirective } from './directives/allow-numbers';
 import { BlockCopyPasteDirective } from './directives/block-copypaste';
 import { PreventfirstwhitespaceDirective } from './directives/prevent-first-whitespace';
 import { PreventSpaceDirective } from './directives/prevent-space';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
     OnlynumberDirective,
     BlockCopyPasteDirective,
     PreventfirstwhitespaceDirective,
-    PreventSpaceDirective
+    PreventSpaceDirective,
+    SidebarComponent
   ],
   imports: [
     CommonModule
@@ -19,7 +21,8 @@ import { PreventSpaceDirective } from './directives/prevent-space';
     OnlynumberDirective,
     BlockCopyPasteDirective,
     PreventfirstwhitespaceDirective,
-    PreventSpaceDirective
+    PreventSpaceDirective,
+    SidebarComponent
   ]
 })
 export class UtilsModule { }

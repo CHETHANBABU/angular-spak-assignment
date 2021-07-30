@@ -1,0 +1,42 @@
+<div class="theme-wrapper">
+    <div class="area"></div>
+    <nav [ngClass]="'sidebar-MO'" class="main-menu">
+        <ul>
+            <li *ngFor="let route of routeList; let ind = index">
+                <a (click)="selecteByRoute(route, ind)" [class.active]="activeIndex === ind">
+                    <i class="icon {{route.icon}} fa-2x"></i>
+                    <span class="nav-text">
+                        {{ route.title }}
+                    </span>
+                </a>
+            </li>
+        </ul>
+
+        <ul class="logout">
+            <li>
+                <a>
+                    <div *ngIf="userProfile.gender">
+                        <img src="{{defaultProfilePic}}" alt=""
+                          class="image--cover icon" />
+                      </div>
+                      <div *ngIf="!userProfile.gender">
+                        <img src="./assets/profile-images/default_avatar.png" alt=""
+                          class="image--cover icon" />
+                      </div>
+
+                    <span class="nav-text pl-2">
+                        {{userName}}
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a (click)="logout()">
+                    <i class="icon las la-sign-out-alt la-2x"></i>
+                    <span class="nav-text">
+                        Logout
+                    </span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>

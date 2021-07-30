@@ -35,4 +35,12 @@ export class CommonService {
         this.router.navigateByUrl(path);
     }
 
+    public get profile(): any {
+        return localStorage.getItem('result');
+    }
+
+    public set profile(data: any) {
+        localStorage.setItem('result', data);
+    }
+
 }

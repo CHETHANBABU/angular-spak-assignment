@@ -8,9 +8,16 @@ import { BusyIndicatorService } from './utils/services/busy-indicator.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy {
-  title = 'client';
   public isBusy: boolean;
   private loaderSubscription: Subscription;
+  options = {
+    position: ['top', 'right'],
+    lastOnBottom: true,
+    animate: 'fromRight',
+    timeOut: 3000,
+    showProgressBar: true,
+    clickToClose: true
+  };
   constructor(
     private loaderService: BusyIndicatorService,
   ) {}
