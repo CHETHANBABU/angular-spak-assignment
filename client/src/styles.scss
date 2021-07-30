@@ -1,1 +1,135 @@
 /* You can add global styles to this file, and also import other style files */
+@import "./assets/theme/variables.scss";
+@import "./assets/theme/fonts.scss";
+
+@font-face {
+    font-family: "Ubuntu_bold";
+    font-style: normal;
+    font-weight: normal;
+    src: local("Ubuntu_bold"), url("./assets/fonts/ubuntu_ssv/Ubuntu-Bold.ttf");
+    font-display: swap;
+}
+@font-face {
+    font-family: "Ubuntu_light";
+    font-style: normal;
+    font-weight: normal;
+    src: local("Ubuntu_light"), url("./assets/fonts/ubuntu_ssv/Ubuntu-Light.ttf");
+    font-display: swap;
+}
+@font-face {
+    font-family: "Ubuntu_regular";
+    font-style: normal;
+    font-weight: normal;
+    src: local("Ubuntu_regular"), url("./assets/fonts/ubuntu_ssv/Ubuntu-Regular.ttf");
+    font-display: swap;
+}
+@font-face {
+    font-family: "Ubuntu_medium";
+    font-style: normal;
+    font-weight: normal;
+    src: local("Ubuntu_medium"), url("./assets/fonts/ubuntu_ssv/Ubuntu-Medium.ttf");
+    font-display: swap;
+}
+
+@mixin position($pos) {
+    position: $pos;
+}
+
+@mixin text-overflow() {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+@mixin wh-transition($width, $height) {
+    width: $width !important;
+    height: $height !important;
+}
+
+body,
+html {
+    font-family: Ubuntu_regular !important;
+    --background: var(--white-background);
+    ion-card {
+        --background: var(--white-background) !important;
+    }
+}
+
+h1 {
+    font-family: Ubuntu_regular !important;
+    font-weight: 500 !important;
+    font-size: 1.5em !important;
+    color: var(--slider-top);
+}
+p {
+    font-family: var(--ion-default-font);
+}
+*:focus {
+    outline: none !important;
+}
+h2 {
+    font-size: 1em;
+    font-weight: 500;
+    color: var(--slider-top);
+}
+.h6 {
+    color: var(--header-labels);
+    font-weight: 400;
+}
+// color lite for input type text placeholder
+input[type="text"]::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
+    color: #b6b6b6;
+}
+input[type="text"]::-moz-placeholder {
+    /* Firefox 19+ */
+    color: #b6b6b6;
+}
+input[type="text"]:-ms-input-placeholder {
+    /* IE 10+ */
+    color: #b6b6b6;
+}
+input[type="text"]:-moz-placeholder {
+    /* Firefox 18- */
+    color: #b6b6b6;
+}
+
+// color lite for input type password placeholder
+input[type="password"]::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
+    color: #b6b6b6;
+}
+input[type="password"]::-moz-placeholder {
+    /* Firefox 19+ */
+    color: #b6b6b6;
+}
+input[type="password"]:-ms-input-placeholder {
+    /* IE 10+ */
+    color: #b6b6b6;
+}
+input[type="password"]:-moz-placeholder {
+    /* Firefox 18- */
+    color: #b6b6b6;
+}
+input.form-control.ng-dirty.ng-invalid {
+    border: solid 1px var(--text-danger) !important;
+    background-color: var(--white-background) !important;
+    -webkit-box-shadow: var(--none) !important;
+    -ms-box-shadow: var(--none) !important;
+    box-shadow: var(--none) !important;
+}
+
+.text-danger {
+    color: var(--text-danger) !important;
+}
+.text-danger > small {
+    position: relative !important;
+}
+.error-message {
+    position: relative !important;
+}
+button:disabled, button[disabled] {
+    border: 1px solid #999999 !important;
+    background-color: #0062cc4a !important;
+    color: #fff !important;
+}

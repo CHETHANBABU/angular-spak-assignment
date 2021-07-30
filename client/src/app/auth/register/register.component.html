@@ -1,0 +1,95 @@
+<div class="container register">
+    <div class="row">
+        <div class="col-md-3 register-left">
+            <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
+            <h3>Welcome</h3>
+            <p>You are 30 seconds ahead of register!</p>
+            <button class="w-50" style="border-radius: 50px;" (click)="selectNavigation('/auth/login')">Login</button>
+        </div>
+        <div class="col-md-9 register-right">
+            <form #patientForm="ngForm">
+
+                <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <h3 class="register-heading">Employee</h3>
+                    <div class="row register-form">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">First name *</label>
+                                <input type="text" class="form-control" preventfirstwhitespace
+                                    [(ngModel)]="model.firstName" #firstName="ngModel" name="firstName" required
+                                    maxlength="28" pattern="^(?!.*\-{2})[\w\-:'\s’\s]+$">
+                                <div class="text-danger"
+                                    *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">
+                                    <small class="inline" *ngIf="firstName.errors.required">First name required.</small>
+                                    <small class="inline" *ngIf="firstName.errors.pattern">
+                                        Special characters allowed are ':', '_', apostrophe & '-'</small>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Last name </label>
+                                <input type="text" class="form-control" preventfirstwhitespace
+                                    [(ngModel)]="model.lastName" #lastName="ngModel" name="lastName" maxlength="28"
+                                    pattern="^(?!.*\-{2})[\w\-:'\s’\s]+$" />
+                                <div class="text-danger"
+                                    *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
+                                    <small class="inline" *ngIf="lastName.errors.pattern">
+                                        Special characters allowed are ':', '_', apostrophe & '-'</small>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Email address *</label>
+                                <input type="email" class="form-control" [(ngModel)]="model.email" #email="ngModel"
+                                    name="email" required preventWhiteSpace
+                                    pattern="^(?!.*\.{2})[a-zA-Z0-9._+-]{1,200}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" />
+                                <div class="text-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
+                                    <small class="inline" *ngIf="email.errors.required">Email address required.</small>
+                                    <small class="inline" *ngIf="email.errors.pattern">Invalid email address</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">Contact number *</label>
+                                <input type="text" maxlength="10" minlength="10" class="form-control"
+                                    [(ngModel)]="model.mobile" #mobile="ngModel" name="mobile" required numbersOnly />
+                                <div class="text-danger" *ngIf="mobile.invalid && (mobile.dirty || mobile.touched)">
+                                    <small class="inline" *ngIf="mobile.errors.required">Contact number
+                                        required.</small>
+                                    <small class="inline" *ngIf="email.errors.minlength === 10">Contact number should be 10 digits.</small>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Gender *</label>
+                                <select placeholder="Select gender" class="form-control w-100" name="gender"
+                                    #gender="ngModel" [(ngModel)]="model.gender" required>
+                                    <option *ngFor="let gender of genderList" class="text-capitalize" ngDefaultControl>
+                                        {{gender}}
+                                    </option>
+                                </select>
+                                <div class="text-danger" *ngIf="gender.invalid && (gender.dirty || gender.touched)">
+                                    <small class="inline" *ngIf="gender.errors.required">Gender required.</small>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Password *</label>
+                                <input type="password" class="form-control"
+                                    pattern='^(?=(.*[a-z]))(?=(.*[A-Z]))(?=(.*[0-9]))(?=(.*[!@#$%^&*()\-_+.{}<>`~|]){1,}).{8,64}$'
+                                    minlength="8" maxlength="64" [(ngModel)]="model.password" #password="ngModel"
+                                    name="password" required autocomplete="off" />
+                                <div class="text-danger" *ngIf="password.invalid && (password.dirty || password.touched)">
+                                    <small *ngIf="password.errors.required">Password required.</small>
+                                    <small *ngIf="password.errors.pattern">Password must be at
+                                        least 8 characters long, contain at least one number, one special character, and
+                                        have a mixture of uppercase and lowercase letters</small>
+                                </div>
+                            </div>
+                            <button class="btnRegister" (click)="registerHandler()"
+                                [disabled]="!patientForm.valid">Register</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
