@@ -1,1 +1,23 @@
-<p>dashboard works!</p>
+<div class="container-fluid">
+    <div class="row mt-4">
+        <form #taskForm="ngForm">
+            <label class="form-label">Task</label>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Task" aria-label="task"
+                    aria-describedby="basic-addon2" [(ngModel)]="model.name" #task="ngModel" name="task" required
+                    preventWhiteSpace>
+                <div class="text-danger" *ngIf="task.invalid && (task.dirty || task.touched)">
+                    <small class="inline" *ngIf="task.errors.required">Task required.</small>
+                </div>
+                <div class="input-group-append">
+                    <button class="btn btn-primary btn-sm" (click)="setUpTask()" [disabled]="!taskForm.valid">Create</button>
+                    <button class="btn btn-light btn-sm" (click)="clear()">Clear</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="row mt-3">
+        <app-task-list *ngIf="taskList.length > 0" [dataList]="taskList"></app-task-list>
+        <img src="../../../assets/task-management.jpg" alt="Task Management" class="w-25" *ngIf="taskList.length === 0"/>
+    </div>
+</div>
