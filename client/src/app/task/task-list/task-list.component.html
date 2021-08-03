@@ -1,9 +1,24 @@
-<div class="row">
-    <div class="col-lg-12" *ngFor="let task of dataList">
-        <div class="card">
-            <div class="card-body">
-                {{task.name}}
-            </div>
-        </div>
-    </div>
-</div>
+<table class="table table-hover">
+    <caption>List of tasks</caption>
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col" class="w-100">Tasks</th>
+            <th scope="col" class="pr-5">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let task of dataList; let i = index">
+            <th scope="row"><input type="checkbox" [id]="task.id" aria-label="Checkbox for task complete" (change)="onEventClick(task, 'complete')" [disabled]="task.isCompleted"/></th>
+            <td>{{task.name}}</td>
+            <td>
+                <button class="btn btn-light btn-sm" (click)="onEventClick(task, 'edit')" [disabled]="task.isCompleted">
+                    <em class="las la-edit" title="Edit task"></em>
+                </button>
+                <button class="btn btn-light btn-sm ml-1" (click)="onEventClick(task, 'delete')" [disabled]="task.isCompleted">
+                    <em class="las la-trash-alt" title="Delete task"></em>
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
